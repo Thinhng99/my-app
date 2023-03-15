@@ -2,6 +2,7 @@ import {
   DATE_FORMAT,
   DATE_TIME_FORMAT,
   NOTIFICATION_MESSAGE,
+  REGEX_PHONE_NUMBER,
   TOAST_OPTIONS,
 } from "./Contant";
 import dayjs from "dayjs";
@@ -38,4 +39,13 @@ export const getNameByValue = <T = any>(
 ) => {
   const found = array.find((item) => item[key] === value);
   return found ? found[label] : null;
+};
+
+export const checkPassword = (value: string) => {
+  return (
+    (value.toUpperCase() === value &&
+      value.toLowerCase() === value &&
+      REGEX_PHONE_NUMBER.exec(value)) ||
+    "Mật khẩu phải bao gồm ít nhất kí tự chữ thường, chữ hoa và số"
+  );
 };

@@ -1,0 +1,68 @@
+@import "../../style/variable";
+
+.login-form-forgot {
+  float: right;
+}
+
+.login-form-button {
+  width: 100%;
+}
+
+.login-checkbox {
+  span {
+    font-family: var(--primary-font-family-medium);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: $neutral-3;
+  }
+
+  .ant-checkbox-inner {
+    border-radius: 5px;
+  }
+}
+
+.prefix-style {
+  margin: 0 16px;
+}
+
+.login-form {
+  max-width: 400px;
+  width: 100%;
+
+  .ant-input-prefix {
+    margin-right: 14px;
+    margin-left: 6px;
+  }
+}
+
+.auth-button {
+  height: 56px;
+}
+.back-ground{
+    background-image: url('../../asset/images/baner.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.login-box{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+.title-login{
+    width: 100%;
+    height: 100px;
+    background: url(//img.zing.vn/upload/fs/source/News/2023/t2/ngu-long.png) 0 0 no-repeat;
+}
+
+.logo{
+  background: url('../../asset/images/logo.png');
+}

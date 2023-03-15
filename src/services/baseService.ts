@@ -1,8 +1,8 @@
 import { Response } from "../types/common.type";
-import { showMessage } from "../utils/helper";
 import interceptAuth from "./axiosClient";
 import queryString from "query-string";
-import { API_SUCCESS_STATUS } from "../utils/Contant";
+import { showMessage } from "utils/helper";
+import { API_SUCCESS_STATUS } from "utils/Contant";
 
 const instance = interceptAuth();
 

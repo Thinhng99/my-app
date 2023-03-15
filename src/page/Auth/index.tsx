@@ -9,7 +9,10 @@ import { path } from "../../router/path";
 import TextInput from "../../components/TextInput";
 import Button from "../../components/Button";
 import { IAuth } from "../../types/auth.type";
-import { loginThunk } from "../../slices/authSlice";
+import { loginThunk, setShowSignUpModal } from "../../slices/authSlice";
+import logo from "../../assets/images/baner.png";
+import SignUp from "./SignUp";
+
 const Auth = () => {
   const [form] = Form.useForm();
   const dispatch = useAppDispatch();
@@ -22,63 +25,82 @@ const Auth = () => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        padding: "120px 30px 30px 30px",
-        minHeight: "100vh",
-      }}
-    >
-      <Form
-        className="login-form"
-        layout="vertical"
-        onFinish={handleFinish}
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexDirection: "column",
-        }}
-        requiredMark={"optional"}
-      >
-        <Row style={{ width: "100%" }} align="middle" justify="center">
-          {/* <img src={} alt="Techasians" width="20%" height="20%" /> */}
-        </Row>
-        <Row>
-          <Col span={24}>
-            <Form.Item
-              label="Tên đăng nhập"
-              name="email"
-              rules={[{ required: true }]}
+    <div className="back-ground">
+      <div className="login-box">
+        <div className="title-login"></div>
+        <Form
+          className="login-form"
+          layout="vertical"
+          onFinish={handleFinish}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexDirection: "column",
+          }}
+          requiredMark={"optional"}
+        >
+          <Row>
+            <Col span={24}>
+              <Form.Item
+                label="Tên đăng nhập"
+                name="email"
+                rules={[{ required: true }]}
+              >
+                <TextInput
+                  style={{ width: "100%" }}
+                  prefix={<UserOutlined />}
+                  placeholder="Nhập tên đăng nhập"
+                />
+              </Form.Item>
+            </Col>
+            <Col span={24}>
+              <Form.Item
+                label="Mật khẩu"
+                name="password"
+                rules={[
+                  { required: true },
+                ]}
+              >
+                <Input.Password
+                  size="large"
+                  prefix={<LockOutlined />}
+                  placeholder="Nhập mật khẩu"
+                />
+              </Form.Item>
+            </Col>
+          </Row>
+          <Row style={{ width: "65%", marginTop: 20 }}>
+            <Button block htmlType="submit" loading={isLoading}>
+              Đăng nhập
+            </Button>
+          </Row>
+          <Row style={{ width: "65%", marginTop: 10 }}>
+            <span
+              style={{
+                color: "red",
+                fontSize: "16px",
+                marginRight: 2,
+                lineHeight: "20px",
+                cursor: "pointer",
+              }}
+              onClick={() => dispatch(setShowSignUpModal(true))}
             >
-              <TextInput
-                style={{ width: "100%" }}
-                prefix={<UserOutlined />}
-                placeholder="Nhập tên đăng nhập"
-              />
-            </Form.Item>
-          </Col>
-          <Col span={24}>
-            <Form.Item
-              label="Mật khẩu"
-              name="password"
-              rules={[{ required: true }]}
+              Đăng ký
+            </span>
+            <span
+              style={{
+                fontSize: "14px",
+                lineHeight: "20px",
+              }}
             >
-              <Input.Password
-                prefix={<LockOutlined />}
-                placeholder="Nhập mật khẩu"
-              />
-            </Form.Item>
-          </Col>
-        </Row>
-        <Row style={{ width: "65%", marginTop: 30 }}>
-          <Button block htmlType="submit" loading={isLoading}>
-            Đăng nhập
-          </Button>
-        </Row>
-      </Form>
+              {" "}
+              ngay để chiến cùng huynh đài
+            </span>
+          </Row>
+        </Form>
+        <SignUp />
+      </div>
     </div>
   );
 };

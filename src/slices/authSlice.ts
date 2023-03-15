@@ -3,20 +3,27 @@ import authService from "../services/authService";
 import { IAuth, IAuthResponse } from "../types/auth.type";
 import { Response } from "../types/common.type";
 import { LOCAL_STORAGE } from "../utils/Contant";
-import { showMessage } from "../utils/helper";
+import { showMessage } from "utils/helper";
+// import { showMessage } from "../utils/Helper";
 
 interface AuthState {
   isLoading: boolean;
+  openSignUpModal: boolean;
 }
 
 const initialState: AuthState = {
   isLoading: false,
+  openSignUpModal: false,
 };
 
 const authSlice = createSlice({
   name: "authentication",
   initialState,
-  reducers: {},
+  reducers: {
+    setShowSignUpModal: (state, action: PayloadAction<boolean>) => {
+      state.openSignUpModal = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(loginThunk.pending, (state, action) => {
@@ -44,5 +51,6 @@ export const loginThunk = createAsyncThunk("login", async (params: IAuth) => {
   const response = await authService.login(params);
   return response;
 });
+export const { setShowSignUpModal } = authSlice.actions;
 const { reducer: authReducer } = authSlice;
 export default authReducer;

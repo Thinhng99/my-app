@@ -13,7 +13,7 @@ export const REGEX_PASSWORD =
 export const REGEX_URL = /^((http|https):\/\/)/;
 export const REGEX_NOT_SPACE = /^\S*$/;
 export const REGEX_MONTH_YEAR = /^((0?[1-9]|1[0-2])\/\d{4})$/gm;
-
+export const REGEX_PASSWORD_TYPE = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).+$/;
 export const STATUS_API_ERROR = 0;
 export const STATUS_UNKNOWN_ERROR = 5;
 export const API_SUCCESS_STATUS = 200;

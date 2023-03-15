@@ -1,6 +1,6 @@
 /* eslint-disable no-template-curly-in-string */
 export const validateMessages = {
-  required: "${label} là trường bắt buộc",
+  required: "Vui lòng nhập ${label}",
   types: {
     email: "${label} không đúng định dạng",
   },
