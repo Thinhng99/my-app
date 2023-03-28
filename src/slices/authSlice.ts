@@ -51,6 +51,14 @@ export const loginThunk = createAsyncThunk("login", async (params: IAuth) => {
   const response = await authService.login(params);
   return response;
 });
+
+export const registerThunk = createAsyncThunk(
+  "signup",
+  async (params: IAuth) => {
+    const response = await authService.signup(params);
+    return response;
+  }
+);
 export const { setShowSignUpModal } = authSlice.actions;
 const { reducer: authReducer } = authSlice;
 export default authReducer;

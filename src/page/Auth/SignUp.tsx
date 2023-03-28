@@ -1,8 +1,9 @@
+/* eslint-disable no-restricted-globals */
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Col, Form, Input, Modal, ModalProps, Row } from "antd";
 import TextInput from "components/TextInput";
 import React from "react";
-import { setShowSignUpModal } from "slices/authSlice";
+import { registerThunk, setShowSignUpModal } from "slices/authSlice";
 import { useAppDispatch, useAppSelector } from "store";
 import { IAuth } from "types/auth.type";
 import { REGEX_PASSWORD_TYPE } from "utils/Contant";
@@ -14,12 +15,11 @@ const SignUp = (props: ModalProps) => {
   const dispatch = useAppDispatch();
   const handleSubmit = () => {
     form.validateFields().then(async (values: IAuth) => {
-      let status = "";
-      //   const { meta } = await dispatch(createBannerThunk(values));
-      //   status = meta.requestStatus;
-      //   if (status === "fulfilled") {
-      //     handleCloseModal();
-      //   }
+      const { meta } = await dispatch(registerThunk(values));
+      status = meta.requestStatus;
+      if (status === "fulfilled") {
+        handleCloseModal();
+      }
     });
   };
 
@@ -50,7 +50,7 @@ const SignUp = (props: ModalProps) => {
               <Form.Item
                 className="title"
                 label="Tên đăng nhập"
-                name="email"
+                name="username"
                 rules={[{ required: true }]}
               >
                 <TextInput

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { Card, Col, Form, Input, Row } from "antd";
@@ -44,7 +45,7 @@ const Auth = () => {
             <Col span={24}>
               <Form.Item
                 label="Tên đăng nhập"
-                name="email"
+                name="username"
                 rules={[{ required: true }]}
               >
                 <TextInput
@@ -58,9 +59,7 @@ const Auth = () => {
               <Form.Item
                 label="Mật khẩu"
                 name="password"
-                rules={[
-                  { required: true },
-                ]}
+                rules={[{ required: true }]}
               >
                 <Input.Password
                   size="large"

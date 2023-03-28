@@ -20,8 +20,8 @@ export const API_SUCCESS_STATUS = 200;
 export const UNKNOWN_ERROR_MESSAGE = "Có lỗi hệ thống xảy ra!";
 
 export const LOCAL_STORAGE = {
-  AUTH_INFO: "@currentAuth",
-  ACCESS_TOKEN: "@accessToken",
+  AUTH_INFO: "userResult",
+  ACCESS_TOKEN: "token",
 };
 
 export const NOTIFICATION_TYPE = {
